@@ -1,0 +1,624 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		55EE1D7C1CDA6EFA003513AB /* Session.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 55EE1D7A1CDA6EFA003513AB /* Session.xcdatamodeld */; };
+		9038DBA11CDC8204004FF3B5 /* ImagesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9038DBA01CDC8204004FF3B5 /* ImagesTableViewController.swift */; };
+		9038DBA31CDC8253004FF3B5 /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9038DBA21CDC8253004FF3B5 /* ImageTableViewCell.swift */; };
+		906E50FF1CE784DC002D94E5 /* ShowImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906E50FE1CE784DC002D94E5 /* ShowImageViewController.swift */; };
+		906E51011CE7BC44002D94E5 /* GGCompass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906E51001CE7BC44002D94E5 /* GGCompass.swift */; };
+		906E51091CE853BA002D94E5 /* GGCompassNavigatorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906E51081CE853BA002D94E5 /* GGCompassNavigatorController.swift */; };
+		906E510B1CE86A53002D94E5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 906E510A1CE86A53002D94E5 /* CoreLocation.framework */; };
+		909CB6B91CE8C3ED001F1FDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 909CB6B71CE8C3ED001F1FDB /* Main.storyboard */; };
+		909CB6C51CE90ED0001F1FDB /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909CB6C31CE90ED0001F1FDB /* Session.swift */; };
+		909CB6C91CE90EE2001F1FDB /* Clothe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909CB6C71CE90EE2001F1FDB /* Clothe.swift */; };
+		909CB6CD1CE90EF0001F1FDB /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909CB6CB1CE90EF0001F1FDB /* Image.swift */; };
+		90DFB4151CD4B59200A9CB8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DFB4141CD4B59200A9CB8D /* AppDelegate.swift */; };
+		90DFB41C1CD4B59200A9CB8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90DFB41B1CD4B59200A9CB8D /* Assets.xcassets */; };
+		90DFB41F1CD4B59200A9CB8D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90DFB41D1CD4B59200A9CB8D /* LaunchScreen.storyboard */; };
+		90DFB42A1CD4B59200A9CB8D /* MollyNavigatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DFB4291CD4B59200A9CB8D /* MollyNavigatorTests.swift */; };
+		90DFB4351CD4B59200A9CB8D /* MollyNavigatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DFB4341CD4B59200A9CB8D /* MollyNavigatorUITests.swift */; };
+		90F1A1D11CD6323D009CEEFB /* SessionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F1A1D01CD6323D009CEEFB /* SessionTableViewController.swift */; };
+		90F1A1D31CD6369C009CEEFB /* SessionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F1A1D21CD6369C009CEEFB /* SessionTableViewCell.swift */; };
+		90F1A1D51CD6383F009CEEFB /* ClotheTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F1A1D41CD6383F009CEEFB /* ClotheTableViewCell.swift */; };
+		90F1A1D71CD638D7009CEEFB /* ClotheTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F1A1D61CD638D7009CEEFB /* ClotheTableViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		90DFB4261CD4B59200A9CB8D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 90DFB4091CD4B59200A9CB8D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 90DFB4101CD4B59200A9CB8D;
+			remoteInfo = MollyNavigator;
+		};
+		90DFB4311CD4B59200A9CB8D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 90DFB4091CD4B59200A9CB8D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 90DFB4101CD4B59200A9CB8D;
+			remoteInfo = MollyNavigator;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		55EE1D7B1CDA6EFA003513AB /* Session.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Session.xcdatamodel; sourceTree = "<group>"; };
+		9038DBA01CDC8204004FF3B5 /* ImagesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagesTableViewController.swift; sourceTree = "<group>"; };
+		9038DBA21CDC8253004FF3B5 /* ImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
+		906E50FE1CE784DC002D94E5 /* ShowImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowImageViewController.swift; sourceTree = "<group>"; };
+		906E51001CE7BC44002D94E5 /* GGCompass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GGCompass.swift; sourceTree = "<group>"; };
+		906E51081CE853BA002D94E5 /* GGCompassNavigatorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GGCompassNavigatorController.swift; sourceTree = "<group>"; };
+		906E510A1CE86A53002D94E5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		909CB6B81CE8C3ED001F1FDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		909CB6C31CE90ED0001F1FDB /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		909CB6C71CE90EE2001F1FDB /* Clothe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Clothe.swift; sourceTree = "<group>"; };
+		909CB6CB1CE90EF0001F1FDB /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		90DFB4111CD4B59200A9CB8D /* MollyNavigator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MollyNavigator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		90DFB4141CD4B59200A9CB8D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		90DFB41B1CD4B59200A9CB8D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		90DFB41E1CD4B59200A9CB8D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		90DFB4201CD4B59200A9CB8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		90DFB4251CD4B59200A9CB8D /* MollyNavigatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MollyNavigatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		90DFB4291CD4B59200A9CB8D /* MollyNavigatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MollyNavigatorTests.swift; sourceTree = "<group>"; };
+		90DFB42B1CD4B59200A9CB8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		90DFB4301CD4B59200A9CB8D /* MollyNavigatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MollyNavigatorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		90DFB4341CD4B59200A9CB8D /* MollyNavigatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MollyNavigatorUITests.swift; sourceTree = "<group>"; };
+		90DFB4361CD4B59200A9CB8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		90F1A1D01CD6323D009CEEFB /* SessionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionTableViewController.swift; sourceTree = "<group>"; };
+		90F1A1D21CD6369C009CEEFB /* SessionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionTableViewCell.swift; sourceTree = "<group>"; };
+		90F1A1D41CD6383F009CEEFB /* ClotheTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClotheTableViewCell.swift; sourceTree = "<group>"; };
+		90F1A1D61CD638D7009CEEFB /* ClotheTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClotheTableViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		90DFB40E1CD4B59200A9CB8D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				906E510B1CE86A53002D94E5 /* CoreLocation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		90DFB4221CD4B59200A9CB8D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		90DFB42D1CD4B59200A9CB8D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		90DFB4081CD4B59200A9CB8D = {
+			isa = PBXGroup;
+			children = (
+				906E510A1CE86A53002D94E5 /* CoreLocation.framework */,
+				90DFB4131CD4B59200A9CB8D /* MollyNavigator */,
+				90DFB4281CD4B59200A9CB8D /* MollyNavigatorTests */,
+				90DFB4331CD4B59200A9CB8D /* MollyNavigatorUITests */,
+				90DFB4121CD4B59200A9CB8D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		90DFB4121CD4B59200A9CB8D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				90DFB4111CD4B59200A9CB8D /* MollyNavigator.app */,
+				90DFB4251CD4B59200A9CB8D /* MollyNavigatorTests.xctest */,
+				90DFB4301CD4B59200A9CB8D /* MollyNavigatorUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		90DFB4131CD4B59200A9CB8D /* MollyNavigator */ = {
+			isa = PBXGroup;
+			children = (
+				90F5A1D01CDB995E0059441E /* Views */,
+				90F5A1CD1CDB991C0059441E /* Models */,
+				90F5A1CE1CDB992B0059441E /* Controllers */,
+				90F1A1CF1CD62E48009CEEFB /* Supports files */,
+			);
+			path = MollyNavigator;
+			sourceTree = "<group>";
+		};
+		90DFB4281CD4B59200A9CB8D /* MollyNavigatorTests */ = {
+			isa = PBXGroup;
+			children = (
+				90DFB4291CD4B59200A9CB8D /* MollyNavigatorTests.swift */,
+				90DFB42B1CD4B59200A9CB8D /* Info.plist */,
+			);
+			path = MollyNavigatorTests;
+			sourceTree = "<group>";
+		};
+		90DFB4331CD4B59200A9CB8D /* MollyNavigatorUITests */ = {
+			isa = PBXGroup;
+			children = (
+				90DFB4341CD4B59200A9CB8D /* MollyNavigatorUITests.swift */,
+				90DFB4361CD4B59200A9CB8D /* Info.plist */,
+			);
+			path = MollyNavigatorUITests;
+			sourceTree = "<group>";
+		};
+		90F1A1CF1CD62E48009CEEFB /* Supports files */ = {
+			isa = PBXGroup;
+			children = (
+				90DFB4141CD4B59200A9CB8D /* AppDelegate.swift */,
+				55EE1D7A1CDA6EFA003513AB /* Session.xcdatamodeld */,
+				90DFB4201CD4B59200A9CB8D /* Info.plist */,
+				90DFB41D1CD4B59200A9CB8D /* LaunchScreen.storyboard */,
+				90DFB41B1CD4B59200A9CB8D /* Assets.xcassets */,
+			);
+			name = "Supports files";
+			sourceTree = "<group>";
+		};
+		90F5A1CD1CDB991C0059441E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				909CB6C31CE90ED0001F1FDB /* Session.swift */,
+				909CB6C71CE90EE2001F1FDB /* Clothe.swift */,
+				909CB6CB1CE90EF0001F1FDB /* Image.swift */,
+				906E51001CE7BC44002D94E5 /* GGCompass.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		90F5A1CE1CDB992B0059441E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				906E51081CE853BA002D94E5 /* GGCompassNavigatorController.swift */,
+				906E50FE1CE784DC002D94E5 /* ShowImageViewController.swift */,
+				9038DBA01CDC8204004FF3B5 /* ImagesTableViewController.swift */,
+				9038DBA21CDC8253004FF3B5 /* ImageTableViewCell.swift */,
+				90F1A1D21CD6369C009CEEFB /* SessionTableViewCell.swift */,
+				90F1A1D01CD6323D009CEEFB /* SessionTableViewController.swift */,
+				90F1A1D41CD6383F009CEEFB /* ClotheTableViewCell.swift */,
+				90F1A1D61CD638D7009CEEFB /* ClotheTableViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		90F5A1D01CDB995E0059441E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				909CB6B71CE8C3ED001F1FDB /* Main.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		90DFB4101CD4B59200A9CB8D /* MollyNavigator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 90DFB4391CD4B59200A9CB8D /* Build configuration list for PBXNativeTarget "MollyNavigator" */;
+			buildPhases = (
+				90DFB40D1CD4B59200A9CB8D /* Sources */,
+				90DFB40E1CD4B59200A9CB8D /* Frameworks */,
+				90DFB40F1CD4B59200A9CB8D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MollyNavigator;
+			productName = MollyNavigator;
+			productReference = 90DFB4111CD4B59200A9CB8D /* MollyNavigator.app */;
+			productType = "com.apple.product-type.application";
+		};
+		90DFB4241CD4B59200A9CB8D /* MollyNavigatorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 90DFB43C1CD4B59200A9CB8D /* Build configuration list for PBXNativeTarget "MollyNavigatorTests" */;
+			buildPhases = (
+				90DFB4211CD4B59200A9CB8D /* Sources */,
+				90DFB4221CD4B59200A9CB8D /* Frameworks */,
+				90DFB4231CD4B59200A9CB8D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				90DFB4271CD4B59200A9CB8D /* PBXTargetDependency */,
+			);
+			name = MollyNavigatorTests;
+			productName = MollyNavigatorTests;
+			productReference = 90DFB4251CD4B59200A9CB8D /* MollyNavigatorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		90DFB42F1CD4B59200A9CB8D /* MollyNavigatorUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 90DFB43F1CD4B59200A9CB8D /* Build configuration list for PBXNativeTarget "MollyNavigatorUITests" */;
+			buildPhases = (
+				90DFB42C1CD4B59200A9CB8D /* Sources */,
+				90DFB42D1CD4B59200A9CB8D /* Frameworks */,
+				90DFB42E1CD4B59200A9CB8D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				90DFB4321CD4B59200A9CB8D /* PBXTargetDependency */,
+			);
+			name = MollyNavigatorUITests;
+			productName = MollyNavigatorUITests;
+			productReference = 90DFB4301CD4B59200A9CB8D /* MollyNavigatorUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		90DFB4091CD4B59200A9CB8D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Sak Andrey";
+				TargetAttributes = {
+					90DFB4101CD4B59200A9CB8D = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = MKJ3EVS82G;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Maps.iOS = {
+								enabled = 0;
+							};
+						};
+					};
+					90DFB4241CD4B59200A9CB8D = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = 90DFB4101CD4B59200A9CB8D;
+					};
+					90DFB42F1CD4B59200A9CB8D = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = 90DFB4101CD4B59200A9CB8D;
+					};
+				};
+			};
+			buildConfigurationList = 90DFB40C1CD4B59200A9CB8D /* Build configuration list for PBXProject "MollyNavigator" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 90DFB4081CD4B59200A9CB8D;
+			productRefGroup = 90DFB4121CD4B59200A9CB8D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				90DFB4101CD4B59200A9CB8D /* MollyNavigator */,
+				90DFB4241CD4B59200A9CB8D /* MollyNavigatorTests */,
+				90DFB42F1CD4B59200A9CB8D /* MollyNavigatorUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		90DFB40F1CD4B59200A9CB8D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				909CB6B91CE8C3ED001F1FDB /* Main.storyboard in Resources */,
+				90DFB41F1CD4B59200A9CB8D /* LaunchScreen.storyboard in Resources */,
+				90DFB41C1CD4B59200A9CB8D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		90DFB4231CD4B59200A9CB8D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		90DFB42E1CD4B59200A9CB8D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		90DFB40D1CD4B59200A9CB8D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				909CB6C51CE90ED0001F1FDB /* Session.swift in Sources */,
+				909CB6CD1CE90EF0001F1FDB /* Image.swift in Sources */,
+				906E51011CE7BC44002D94E5 /* GGCompass.swift in Sources */,
+				9038DBA11CDC8204004FF3B5 /* ImagesTableViewController.swift in Sources */,
+				55EE1D7C1CDA6EFA003513AB /* Session.xcdatamodeld in Sources */,
+				90F1A1D31CD6369C009CEEFB /* SessionTableViewCell.swift in Sources */,
+				909CB6C91CE90EE2001F1FDB /* Clothe.swift in Sources */,
+				90F1A1D51CD6383F009CEEFB /* ClotheTableViewCell.swift in Sources */,
+				90DFB4151CD4B59200A9CB8D /* AppDelegate.swift in Sources */,
+				90F1A1D71CD638D7009CEEFB /* ClotheTableViewController.swift in Sources */,
+				9038DBA31CDC8253004FF3B5 /* ImageTableViewCell.swift in Sources */,
+				90F1A1D11CD6323D009CEEFB /* SessionTableViewController.swift in Sources */,
+				906E50FF1CE784DC002D94E5 /* ShowImageViewController.swift in Sources */,
+				906E51091CE853BA002D94E5 /* GGCompassNavigatorController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		90DFB4211CD4B59200A9CB8D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				90DFB42A1CD4B59200A9CB8D /* MollyNavigatorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		90DFB42C1CD4B59200A9CB8D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				90DFB4351CD4B59200A9CB8D /* MollyNavigatorUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		90DFB4271CD4B59200A9CB8D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 90DFB4101CD4B59200A9CB8D /* MollyNavigator */;
+			targetProxy = 90DFB4261CD4B59200A9CB8D /* PBXContainerItemProxy */;
+		};
+		90DFB4321CD4B59200A9CB8D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 90DFB4101CD4B59200A9CB8D /* MollyNavigator */;
+			targetProxy = 90DFB4311CD4B59200A9CB8D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		909CB6B71CE8C3ED001F1FDB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				909CB6B81CE8C3ED001F1FDB /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		90DFB41D1CD4B59200A9CB8D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				90DFB41E1CD4B59200A9CB8D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		90DFB4371CD4B59200A9CB8D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		90DFB4381CD4B59200A9CB8D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		90DFB43A1CD4B59200A9CB8D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = MollyNavigator/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = sakstudent.MollyNavigator;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		90DFB43B1CD4B59200A9CB8D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = MollyNavigator/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = sakstudent.MollyNavigator;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		90DFB43D1CD4B59200A9CB8D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = MollyNavigatorTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = sakstudent.MollyNavigatorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MollyNavigator.app/MollyNavigator";
+			};
+			name = Debug;
+		};
+		90DFB43E1CD4B59200A9CB8D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = MollyNavigatorTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = sakstudent.MollyNavigatorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MollyNavigator.app/MollyNavigator";
+			};
+			name = Release;
+		};
+		90DFB4401CD4B59200A9CB8D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = MollyNavigatorUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = sakstudent.MollyNavigatorUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = MollyNavigator;
+			};
+			name = Debug;
+		};
+		90DFB4411CD4B59200A9CB8D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = MollyNavigatorUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = sakstudent.MollyNavigatorUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = MollyNavigator;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		90DFB40C1CD4B59200A9CB8D /* Build configuration list for PBXProject "MollyNavigator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				90DFB4371CD4B59200A9CB8D /* Debug */,
+				90DFB4381CD4B59200A9CB8D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		90DFB4391CD4B59200A9CB8D /* Build configuration list for PBXNativeTarget "MollyNavigator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				90DFB43A1CD4B59200A9CB8D /* Debug */,
+				90DFB43B1CD4B59200A9CB8D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		90DFB43C1CD4B59200A9CB8D /* Build configuration list for PBXNativeTarget "MollyNavigatorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				90DFB43D1CD4B59200A9CB8D /* Debug */,
+				90DFB43E1CD4B59200A9CB8D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		90DFB43F1CD4B59200A9CB8D /* Build configuration list for PBXNativeTarget "MollyNavigatorUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				90DFB4401CD4B59200A9CB8D /* Debug */,
+				90DFB4411CD4B59200A9CB8D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		55EE1D7A1CDA6EFA003513AB /* Session.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				55EE1D7B1CDA6EFA003513AB /* Session.xcdatamodel */,
+			);
+			currentVersion = 55EE1D7B1CDA6EFA003513AB /* Session.xcdatamodel */;
+			path = Session.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 90DFB4091CD4B59200A9CB8D /* Project object */;
+}
