@@ -21,11 +21,9 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
             if( newSessionName == "" )
             {
                 mistakeAlert("Session name would consist some value")
-                
             }else {
                 addSessionToStorage(newSessionName)
                 refresh()
-                
             }
         }
     }
@@ -39,7 +37,6 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
                 editSession(editSessionName, indexPath: self.indexEditSession!)
                 tableView.reloadRowsAtIndexPaths([self.indexEditSession!], withRowAnimation: .Fade)
             }
-            
         }
         
     }
@@ -48,11 +45,6 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
         super.viewDidLoad()
         refresh()
         
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // MARK: - Core Data
@@ -69,7 +61,6 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
                 return
             }
         }
-        
     }
     
     func refresh()
@@ -145,7 +136,7 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
         }))
         
         alert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action) -> Void in
-           
+            
         }))
         self.presentViewController(alert, animated: true, completion: nil)
     }
@@ -159,7 +150,6 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
     
     func alertEditSession(defaultText: String)
     {
-        
         let alert = UIAlertController(title: "Session Name", message: "Enter a text", preferredStyle: .Alert)
         alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
             textField.text = defaultText
@@ -167,23 +157,20 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
         alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
             let textField = alert.textFields![0] as UITextField
             self.editSessionName = textField.text!
-    
+            
         }))
         self.presentViewController(alert, animated: true, completion: nil)
-    
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return sessions.count
     }
-
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cellSession", forIndexPath: indexPath) as! SessionTableViewCell
@@ -199,7 +186,7 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
             self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         }
     }
-
+    
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         //Share
         let shareAction = UITableViewRowAction(style: .Default, title: "Share", handler: { (actin, indexPath) -> Void in
@@ -208,7 +195,6 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
             for image in images {
                 imagesForShare.append(UIImage(data: image.image)!)
             }
-            print("\(imagesForShare.count)")
             let activityController = UIActivityViewController(activityItems: imagesForShare, applicationActivities: nil)
             activityController.popoverPresentationController?.sourceView = self.view
             self.presentViewController(activityController, animated: true, completion: nil)
@@ -220,7 +206,7 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
             
             if let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
                 let sessionToDelete = self.fetchResultController.objectAtIndexPath(indexPath) as! Session
-        
+                
                 managedObjectContext.deleteObject(sessionToDelete)
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
                 do {
@@ -244,6 +230,6 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
         
         return [deleteAction, shareAction, editAction]
     }
-
-
+    
+    
 }

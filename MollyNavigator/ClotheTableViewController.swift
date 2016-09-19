@@ -185,7 +185,7 @@ class ClotheTableViewController: UITableViewController, NSFetchedResultsControll
         alert.addAction(UIAlertAction(title: "OK", style: .Default, handler:nil))
         self.presentViewController(alert, animated: true, completion: nil)
     }
-
+    
     func alertEditClothe(defaultText: String)
     {
         
@@ -223,12 +223,12 @@ class ClotheTableViewController: UITableViewController, NSFetchedResultsControll
     func loadPhotoByName(text: String)-> UIImage
     {
         switch text {
-            case "shirt": return UIImage(named: "shirt")!
-            case "pants": return UIImage(named: "pants")!
-            case "shoes": return UIImage(named: "shoes")!
-            default:
-                return UIImage(named: "undefinded")!
-            }
+        case "shirt": return UIImage(named: "shirt")!
+        case "pants": return UIImage(named: "pants")!
+        case "shoes": return UIImage(named: "shoes")!
+        default:
+            return UIImage(named: "undefinded")!
+        }
     }
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         //Social

@@ -1,16 +1,18 @@
 {
-  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "F794742119F09604FFBD00A982681171EDDE50BB",
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "AECD9817F2C9AFC74D9132D87E5EB946032A1B0F",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "8F2CF2C309BC723DD35CBE1914FF20903CCA073C" : 0,
     "F794742119F09604FFBD00A982681171EDDE50BB" : 0,
-    "8F2CF2C309BC723DD35CBE1914FF20903CCA073C" : 0
+    "AECD9817F2C9AFC74D9132D87E5EB946032A1B0F" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "0C39AC4E-AEF4-4A9B-B7B8-A79311AE4AC1",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "8F2CF2C309BC723DD35CBE1914FF20903CCA073C" : "",
     "F794742119F09604FFBD00A982681171EDDE50BB" : "MollyNavigator\/",
-    "8F2CF2C309BC723DD35CBE1914FF20903CCA073C" : ""
+    "AECD9817F2C9AFC74D9132D87E5EB946032A1B0F" : "Molly-Navigator\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "MollyNavigator",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
@@ -20,6 +22,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/butters2911\/-MollyNavigator.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "8F2CF2C309BC723DD35CBE1914FF20903CCA073C"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/AndreySak\/Molly-Navigator.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "AECD9817F2C9AFC74D9132D87E5EB946032A1B0F"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/butters2911\/MollyNavigator.git",
