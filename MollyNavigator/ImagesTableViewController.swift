@@ -16,18 +16,18 @@ class ImagesTableViewController: UITableViewController, UIImagePickerControllerD
     var clothe: Clothe!
     var lat, long: Double?
     var manager: CLLocationManager!
-    var fetchResultController: NSFetchedResultsController!
+    var fetchResultController: NSFetchedResultsController<NSFetchRequestResult>!
     var showAll = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        sortButton.setTitle("Date", forState: .Normal)
+        sortButton.setTitle("Date", for: UIControlState())
         title = clothe.name
         initLocationManager()
         reloadFromDB(showAll, sortBy: "price")
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         updatePrice()
     }
 
@@ -37,42 +37,41 @@ class ImagesTableViewController: UITableViewController, UIImagePickerControllerD
     func updatePrice()
     {
         
-        for (var row = 0; row < tableView.numberOfRowsInSection(0); row += 1)
-        {
-            let indexPath = NSIndexPath(forRow: row, inSection: 0)
-            tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: false)
+        for var row in 0..<tableView.numberOfRows(inSection: 0) {
+            let indexPath = IndexPath(row: row, section: 0)
+            tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.top, animated: false)
             
-            let cell :ImageTableViewCell = tableView.cellForRowAtIndexPath(indexPath) as! ImageTableViewCell
-            if images[row].price != Int(cell.pickerPrice.text!){
-                images[row].price = Int(cell.pickerPrice.text!)
+            let cell :ImageTableViewCell = tableView.cellForRow(at: indexPath) as! ImageTableViewCell
+            if images[row].price?.intValue != Int(cell.pickerPrice.text!) {
+                images[row].price = Int(cell.pickerPrice.text!) as NSNumber?
                 editPrice(images[row].price!, indexPath: indexPath)
             }
         }
     }
 
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showImageClothe" {
-            let upcoming: ShowImageViewController = segue.destinationViewController as! ShowImageViewController
+            let upcoming: ShowImageViewController = segue.destination as! ShowImageViewController
             let indexPath = self.tableView.indexPathForSelectedRow!
             
-            upcoming.img = images[indexPath.row]
-            self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            upcoming.img = images[(indexPath as NSIndexPath).row]
+            self.tableView.deselectRow(at: indexPath, animated: true)
         }
     }
     
     // MARK: - Core Data
     
-    func addImageToStorage(image: UIImage)
+    func addImageToStorage(_ image: UIImage)
     {
-        if let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
-            let imageContext = NSEntityDescription.insertNewObjectForEntityForName("Image", inManagedObjectContext: managedObjectContext) as! Image
+        if let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext {
+            let imageContext = NSEntityDescription.insertNewObject(forEntityName: "Image", into: managedObjectContext) as! Image
             
             imageContext.image = UIImageJPEGRepresentation(image, 0.0)!
             imageContext.clothe = clothe
-            imageContext.longtitude = lat!
-            imageContext.latitude = long!
-            imageContext.date = NSDate()
+            imageContext.longtitude = lat! as NSNumber?
+            imageContext.latitude = long! as NSNumber?
+            imageContext.date = Date()
             imageContext.price = 30
             do {
                 try managedObjectContext.save()
@@ -84,9 +83,9 @@ class ImagesTableViewController: UITableViewController, UIImagePickerControllerD
         
     }
     
-    func reloadFromDB(showAll: Bool, sortBy: String)
+    func reloadFromDB(_ showAll: Bool, sortBy: String)
     {
-        let fetchRequest = NSFetchRequest(entityName: "Image")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Image")
         let imageClothePredicate: NSPredicate
         
         if showAll {
@@ -99,7 +98,7 @@ class ImagesTableViewController: UITableViewController, UIImagePickerControllerD
         let sortDescriptor = NSSortDescriptor(key: sortBy, ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
         
-        if let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
+        if let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext {
             fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
             fetchResultController.delegate = self
             
@@ -115,10 +114,10 @@ class ImagesTableViewController: UITableViewController, UIImagePickerControllerD
     }
     
     
-    func editPrice(price: NSNumber, indexPath: NSIndexPath)
+    func editPrice(_ price: NSNumber, indexPath: IndexPath)
     {
-        if let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
-            let sessionToEdit = self.fetchResultController.objectAtIndexPath(indexPath) as! Image
+        if let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext {
+            let sessionToEdit = self.fetchResultController.object(at: indexPath) as! Image
             sessionToEdit.setValue(price, forKey: "price")
             
             do {
@@ -133,53 +132,53 @@ class ImagesTableViewController: UITableViewController, UIImagePickerControllerD
     // MARK: - Table view soring data
     
     @IBOutlet weak var sortButton: UIButton!
-    @IBAction func sort(sender: AnyObject) {
+    @IBAction func sort(_ sender: AnyObject) {
         if sortButton.currentTitle == "Price" {
-            sortButton.setTitle("Date", forState: .Normal)
+            sortButton.setTitle("Date", for: UIControlState())
             reloadFromDB(showAll, sortBy: "price")
         }else {
-            sortButton.setTitle("Price", forState: .Normal)
+            sortButton.setTitle("Price", for: UIControlState())
             reloadFromDB(showAll, sortBy: "date")
         }
     }
     
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return images.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("imageCell", forIndexPath: indexPath) as! ImageTableViewCell
-        cell.pickerPrice.text = String(images[indexPath.row].price!)
-        cell.timeCreation.text = getDate(images[indexPath.row].date!)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "imageCell", for: indexPath) as! ImageTableViewCell
+        cell.pickerPrice.text = String(describing: images[(indexPath as NSIndexPath).row].price!)
+        cell.timeCreation.text = getDate(images[(indexPath as NSIndexPath).row].date! as Date)
         cell.photo.frame = CGRect(x: 0, y: 0, width: cell.imageConteiner.frame.width, height: cell.imageConteiner.frame.height)
-        cell.photo.image = UIImage(data: images[indexPath.row].image)
-        cell.sessionName.text = images[indexPath.row].clothe.session.session_name
+        cell.photo.image = UIImage(data: images[(indexPath as NSIndexPath).row].image as Data)
+        cell.sessionName.text = images[(indexPath as NSIndexPath).row].clothe.session.session_name
         return cell
     }
     
-    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         //Social
-        let shareAction = UITableViewRowAction(style: .Default, title: "Share", handler: { (actin, indexPath) -> Void in
-            let imageToShare = UIImage(data: self.images[indexPath.row].image)
+        let shareAction = UITableViewRowAction(style: .default, title: "Share", handler: { (actin, indexPath) -> Void in
+            let imageToShare = UIImage(data: self.images[(indexPath as NSIndexPath).row].image as Data)
             let activityController = UIActivityViewController(activityItems: [imageToShare!], applicationActivities: nil)
             activityController.popoverPresentationController?.sourceView = self.view
-            self.presentViewController(activityController, animated: true, completion: nil)
+            self.present(activityController, animated: true, completion: nil)
         })
         
         //Delete
-        let deleteAction = UITableViewRowAction(style: .Default, title: "Delete", handler: {(actin, indexPath) -> Void in
-            self.images.removeAtIndex(indexPath.row)
+        let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: {(actin, indexPath) -> Void in
+            self.images.remove(at: (indexPath as NSIndexPath).row)
             
-            if let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
-                let sessionToDelete = self.fetchResultController.objectAtIndexPath(indexPath) as! Image
-                managedObjectContext.deleteObject(sessionToDelete)
-                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            if let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext {
+                let sessionToDelete = self.fetchResultController.object(at: indexPath) as! Image
+                managedObjectContext.delete(sessionToDelete)
+                tableView.deleteRows(at: [indexPath], with: .fade)
                 do {
                     try managedObjectContext.save()
                 } catch {
@@ -194,10 +193,10 @@ class ImagesTableViewController: UITableViewController, UIImagePickerControllerD
         return [deleteAction, shareAction]
     }
     
-    func getDate(date: NSDate) -> String
+    func getDate(_ date: Date) -> String
     {
-        let calendar = NSCalendar.currentCalendar()
-        let components = calendar.components([.Day, .Month, .Year, .Hour, .Minute], fromDate: date)
+        let calendar = Calendar.current
+        let components = (calendar as NSCalendar).components([.day, .month, .year, .hour, .minute], from: date)
         let hour = components.hour
         let minutes = components.minute
         let day = components.day
@@ -208,17 +207,17 @@ class ImagesTableViewController: UITableViewController, UIImagePickerControllerD
     
     // MARK: - Photo engine
     
-    @IBAction func takePhoto(sender: AnyObject) {
-        if( UIImagePickerController.isSourceTypeAvailable(.Camera)) {
+    @IBAction func takePhoto(_ sender: AnyObject) {
+        if( UIImagePickerController.isSourceTypeAvailable(.camera)) {
             let picker = UIImagePickerController()
-            picker.sourceType = .Camera
+            picker.sourceType = .camera
             picker.delegate = self
             picker.allowsEditing = false
-            presentViewController(picker, animated:true, completion: nil)
+            present(picker, animated:true, completion: nil)
         }
     }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         var image = info[UIImagePickerControllerEditedImage] as? UIImage
         if image == nil {
@@ -226,17 +225,17 @@ class ImagesTableViewController: UITableViewController, UIImagePickerControllerD
         }
         addImageToStorage(image!)
         reloadFromDB(showAll, sortBy: "price")
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
         
     }
     
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        dismissViewControllerAnimated(true, completion: nil)
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
     }
     
     // MARK: - Location Manager
     
-    func locationManager(manager:CLLocationManager, didUpdateLocations locations:[CLLocation]) {
+    func locationManager(_ manager:CLLocationManager, didUpdateLocations locations:[CLLocation]) {
         if let location = locations.first as CLLocation? {
             long = location.coordinate.longitude
             lat = location.coordinate.latitude
@@ -252,7 +251,7 @@ class ImagesTableViewController: UITableViewController, UIImagePickerControllerD
         manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.allowsBackgroundLocationUpdates = true
         NSLog("\(CLLocationManager.authorizationStatus())");
-        if(CLLocationManager.authorizationStatus() == CLAuthorizationStatus.NotDetermined) {
+        if(CLLocationManager.authorizationStatus() == CLAuthorizationStatus.notDetermined) {
             manager.requestWhenInUseAuthorization()
         }
         manager.startUpdatingLocation();

@@ -14,7 +14,7 @@ import MobileCoreServices
 class SessionTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
     var sessions: [Session] = []
-    var fetchResultController: NSFetchedResultsController!
+    var fetchResultController: NSFetchedResultsController<NSFetchRequestResult>!
     var newSessionName = ""
         {
         didSet {
@@ -27,7 +27,7 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
             }
         }
     }
-    var indexEditSession: NSIndexPath?
+    var indexEditSession: IndexPath?
     var editSessionName = ""
         {
         didSet{
@@ -35,7 +35,7 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
                 mistakeAlert("Session name would consist some value")
             }else {
                 editSession(editSessionName, indexPath: self.indexEditSession!)
-                tableView.reloadRowsAtIndexPaths([self.indexEditSession!], withRowAnimation: .Fade)
+                tableView.reloadRows(at: [self.indexEditSession!], with: .fade)
             }
         }
         
@@ -49,10 +49,10 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
     
     // MARK: - Core Data
     
-    func addSessionToStorage(sessionName: String)
+    func addSessionToStorage(_ sessionName: String)
     {
-        if let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
-            let sessionContext = NSEntityDescription.insertNewObjectForEntityForName("Session", inManagedObjectContext: managedObjectContext) as! Session
+        if let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext {
+            let sessionContext = NSEntityDescription.insertNewObject(forEntityName: "Session", into: managedObjectContext) as! Session
             sessionContext.session_name = sessionName
             do {
                 try managedObjectContext.save()
@@ -65,11 +65,11 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
     
     func refresh()
     {
-        let fetchRequest = NSFetchRequest(entityName: "Session")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Session")
         let sortDescriptor = NSSortDescriptor(key: "session_name", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
         
-        if let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
+        if let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext {
             fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
             fetchResultController.delegate = self
             
@@ -83,10 +83,10 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
         self.tableView.reloadData()
     }
     
-    func editSession(editSessionName: String, indexPath: NSIndexPath)
+    func editSession(_ editSessionName: String, indexPath: IndexPath)
     {
-        if let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
-            let sessionToEdit = self.fetchResultController.objectAtIndexPath(indexPath) as! Session
+        if let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext {
+            let sessionToEdit = self.fetchResultController.object(at: indexPath) as! Session
             sessionToEdit.setValue(editSessionName, forKey: "session_name")
             
             do {
@@ -97,17 +97,17 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
         }
     }
     
-    func getImagesForClothe(indexPath: NSIndexPath) -> [Image]
+    func getImagesForClothe(_ indexPath: IndexPath) -> [Image]
     {
         var images: [Image] = []
-        let fetchRequest = NSFetchRequest(entityName: "Image")
-        let imageClothePredicate = NSPredicate(format: "clothe.session == %@", sessions[indexPath.row])
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Image")
+        let imageClothePredicate = NSPredicate(format: "clothe.session == %@", sessions[(indexPath as NSIndexPath).row])
         
         fetchRequest.predicate = imageClothePredicate
         let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
         
-        if let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
+        if let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext {
             fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
             fetchResultController.delegate = self
             
@@ -124,91 +124,91 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
     
     // MARK: - Alert
     
-    @IBAction func newSession(sender: AnyObject) {
-        let alert = UIAlertController(title: "Session Name", message: "Enter a text", preferredStyle: .Alert)
-        alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
+    @IBAction func newSession(_ sender: AnyObject) {
+        let alert = UIAlertController(title: "Session Name", message: "Enter a text", preferredStyle: .alert)
+        alert.addTextField(configurationHandler: { (textField) -> Void in
             textField.text = "Pretty Molly"
         })
         
-        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
             let textField = alert.textFields![0] as UITextField
             self.newSessionName = textField.text!
         }))
         
-        alert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action) -> Void in
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action) -> Void in
             
         }))
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     }
     
-    func mistakeAlert(mistakeText: String)
+    func mistakeAlert(_ mistakeText: String)
     {
-        let alert = UIAlertController(title: "Mistake", message: mistakeText, preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler:nil))
-        self.presentViewController(alert, animated: true, completion: nil)
+        let alert = UIAlertController(title: "Mistake", message: mistakeText, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler:nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
-    func alertEditSession(defaultText: String)
+    func alertEditSession(_ defaultText: String)
     {
-        let alert = UIAlertController(title: "Session Name", message: "Enter a text", preferredStyle: .Alert)
-        alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
+        let alert = UIAlertController(title: "Session Name", message: "Enter a text", preferredStyle: .alert)
+        alert.addTextField(configurationHandler: { (textField) -> Void in
             textField.text = defaultText
         })
-        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
             let textField = alert.textFields![0] as UITextField
             self.editSessionName = textField.text!
             
         }))
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     }
     
     // MARK: - Table view data source
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sessions.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cellSession", forIndexPath: indexPath) as! SessionTableViewCell
-        cell.sessionName.text = self.sessions[indexPath.row].session_name
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellSession", for: indexPath) as! SessionTableViewCell
+        cell.sessionName.text = self.sessions[(indexPath as NSIndexPath).row].session_name
         return cell
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showSession" {
-            let upcoming: ClotheTableViewController = segue.destinationViewController as! ClotheTableViewController
+            let upcoming: ClotheTableViewController = segue.destination as! ClotheTableViewController
             let indexPath = self.tableView.indexPathForSelectedRow!
-            upcoming.session = self.sessions[indexPath.row]
-            self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            upcoming.session = self.sessions[(indexPath as NSIndexPath).row]
+            self.tableView.deselectRow(at: indexPath, animated: true)
         }
     }
     
-    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         //Share
-        let shareAction = UITableViewRowAction(style: .Default, title: "Share", handler: { (actin, indexPath) -> Void in
+        let shareAction = UITableViewRowAction(style: .default, title: "Share", handler: { (actin, indexPath) -> Void in
             let images = self.getImagesForClothe(indexPath)
             var imagesForShare: [UIImage] = []
             for image in images {
-                imagesForShare.append(UIImage(data: image.image)!)
+                imagesForShare.append(UIImage(data: image.image as Data)!)
             }
             let activityController = UIActivityViewController(activityItems: imagesForShare, applicationActivities: nil)
             activityController.popoverPresentationController?.sourceView = self.view
-            self.presentViewController(activityController, animated: true, completion: nil)
+            self.present(activityController, animated: true, completion: nil)
         })
         
         //Delete
-        let deleteAction = UITableViewRowAction(style: .Default, title: "Delete", handler: {(actin, indexPath) -> Void in
-            self.sessions.removeAtIndex(indexPath.row)
+        let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: {(actin, indexPath) -> Void in
+            self.sessions.remove(at: (indexPath as NSIndexPath).row)
             
-            if let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
-                let sessionToDelete = self.fetchResultController.objectAtIndexPath(indexPath) as! Session
+            if let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext {
+                let sessionToDelete = self.fetchResultController.object(at: indexPath) as! Session
                 
-                managedObjectContext.deleteObject(sessionToDelete)
-                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                managedObjectContext.delete(sessionToDelete)
+                tableView.deleteRows(at: [indexPath], with: .fade)
                 do {
                     try managedObjectContext.save()
                 } catch {
@@ -218,9 +218,9 @@ class SessionTableViewController: UITableViewController, NSFetchedResultsControl
         })
         
         //Edit
-        let editAction = UITableViewRowAction(style : .Default, title: "Edit", handler: {(actin, indexPath) -> Void in
+        let editAction = UITableViewRowAction(style : .default, title: "Edit", handler: {(actin, indexPath) -> Void in
             self.indexEditSession = indexPath
-            self.alertEditSession(self.sessions[indexPath.row].session_name)
+            self.alertEditSession(self.sessions[(indexPath as NSIndexPath).row].session_name)
             
         })
         

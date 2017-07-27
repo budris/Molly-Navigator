@@ -14,8 +14,8 @@ class ClotheTableViewController: UITableViewController, NSFetchedResultsControll
     var clothes: [Clothe] = []
     var session: Session!
     var showAllImagesForClothe = false
-    var selectIndexPath: NSIndexPath?
-    var fetchResultController: NSFetchedResultsController!
+    var selectIndexPath: IndexPath?
+    var fetchResultController: NSFetchedResultsController<NSFetchRequestResult>!
     var newClotheName = ""
         {
         didSet {
@@ -30,7 +30,7 @@ class ClotheTableViewController: UITableViewController, NSFetchedResultsControll
             }
         }
     }
-    var indexEditClothe: NSIndexPath?
+    var indexEditClothe: IndexPath?
     var editClotheName = ""
         {
         didSet{
@@ -38,7 +38,7 @@ class ClotheTableViewController: UITableViewController, NSFetchedResultsControll
                 mistakeAlert("Clothe name would consist some value")
             }else {
                 editClothe(editClotheName, indexPath: self.indexEditClothe!)
-                tableView.reloadRowsAtIndexPaths([self.indexEditClothe!], withRowAnimation: .Fade)
+                tableView.reloadRows(at: [self.indexEditClothe!], with: .fade)
             }
             
         }
@@ -56,10 +56,10 @@ class ClotheTableViewController: UITableViewController, NSFetchedResultsControll
         super.didReceiveMemoryWarning()
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showImages" {
-            let upcoming: ImagesTableViewController = segue.destinationViewController as! ImagesTableViewController
-            let indexPath: NSIndexPath?
+            let upcoming: ImagesTableViewController = segue.destination as! ImagesTableViewController
+            let indexPath: IndexPath?
             if self.tableView.indexPathForSelectedRow == nil
             {
                 indexPath = selectIndexPath
@@ -67,7 +67,7 @@ class ClotheTableViewController: UITableViewController, NSFetchedResultsControll
                 indexPath = self.tableView.indexPathForSelectedRow!
             }
             
-            upcoming.clothe = clothes[indexPath!.row]
+            upcoming.clothe = clothes[(indexPath! as NSIndexPath).row]
             
             if showAllImagesForClothe {
                 showAllImagesForClothe = false
@@ -76,32 +76,32 @@ class ClotheTableViewController: UITableViewController, NSFetchedResultsControll
                 upcoming.showAll = false
             }
             
-            self.tableView.deselectRowAtIndexPath(indexPath!, animated: true)
+            self.tableView.deselectRow(at: indexPath!, animated: true)
         }
     }
     
-    @IBAction func addClothe(sender: AnyObject) {
-        let alert = UIAlertController(title: "Clothe Name", message: "Enter a text", preferredStyle: .Alert)
-        alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
+    @IBAction func addClothe(_ sender: AnyObject) {
+        let alert = UIAlertController(title: "Clothe Name", message: "Enter a text", preferredStyle: .alert)
+        alert.addTextField(configurationHandler: { (textField) -> Void in
             textField.text = "Pretty jacket"
         })
         
-        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
             let textField = alert.textFields![0] as UITextField
             self.newClotheName = textField.text!
         }))
         
-        alert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action) -> Void in
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action) -> Void in
         }))
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     }
     
     // MARK: - Core Data
     
-    func addClotheToStorage(clotheName: String)
+    func addClotheToStorage(_ clotheName: String)
     {
-        if let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
-            let clotheContext = NSEntityDescription.insertNewObjectForEntityForName("Clothe", inManagedObjectContext: managedObjectContext) as! Clothe
+        if let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext {
+            let clotheContext = NSEntityDescription.insertNewObject(forEntityName: "Clothe", into: managedObjectContext) as! Clothe
             
             clotheContext.name = clotheName
             clotheContext.session = session
@@ -118,13 +118,13 @@ class ClotheTableViewController: UITableViewController, NSFetchedResultsControll
     
     func refresh()
     {
-        let fetchRequest = NSFetchRequest(entityName: "Clothe")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Clothe")
         let clotheSessionPredicate = NSPredicate(format: "session == %@", session)
         fetchRequest.predicate = clotheSessionPredicate
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
         
-        if let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
+        if let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext {
             fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
             fetchResultController.delegate = self
             
@@ -138,10 +138,10 @@ class ClotheTableViewController: UITableViewController, NSFetchedResultsControll
         self.tableView.reloadData()
     }
     
-    func editClothe(editSessionName: String, indexPath: NSIndexPath)
+    func editClothe(_ editSessionName: String, indexPath: IndexPath)
     {
-        if let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
-            let sessionToEdit = self.fetchResultController.objectAtIndexPath(indexPath) as! Clothe
+        if let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext {
+            let sessionToEdit = self.fetchResultController.object(at: indexPath) as! Clothe
             sessionToEdit.setValue(editClotheName, forKey: "name")
             
             do {
@@ -152,17 +152,17 @@ class ClotheTableViewController: UITableViewController, NSFetchedResultsControll
         }
     }
     
-    func getImagesForClothe(indexPath: NSIndexPath) -> [Image]
+    func getImagesForClothe(_ indexPath: IndexPath) -> [Image]
     {
         var images: [Image] = []
-        let fetchRequest = NSFetchRequest(entityName: "Image")
-        let imageClothePredicate = NSPredicate(format: "clothe == %@", clothes[indexPath.row])
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Image")
+        let imageClothePredicate = NSPredicate(format: "clothe == %@", clothes[(indexPath as NSIndexPath).row])
         
         fetchRequest.predicate = imageClothePredicate
         let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
         
-        if let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
+        if let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext {
             fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
             fetchResultController.delegate = self
             
@@ -179,48 +179,48 @@ class ClotheTableViewController: UITableViewController, NSFetchedResultsControll
     
     // MARK: - Alert
     
-    func mistakeAlert(mistakeText: String)
+    func mistakeAlert(_ mistakeText: String)
     {
-        let alert = UIAlertController(title: "Mistake", message: mistakeText, preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler:nil))
-        self.presentViewController(alert, animated: true, completion: nil)
+        let alert = UIAlertController(title: "Mistake", message: mistakeText, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler:nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
-    func alertEditClothe(defaultText: String)
+    func alertEditClothe(_ defaultText: String)
     {
         
-        let alert = UIAlertController(title: "Clothe Name", message: "Enter a text", preferredStyle: .Alert)
-        alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
+        let alert = UIAlertController(title: "Clothe Name", message: "Enter a text", preferredStyle: .alert)
+        alert.addTextField(configurationHandler: { (textField) -> Void in
             textField.text = defaultText
         })
         
-        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
             let textField = alert.textFields![0] as UITextField
             self.editClotheName = textField.text!
             
         }))
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     }
     
     // MARK: - Table view data source
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return clothes.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cellClothe", forIndexPath: indexPath) as! ClotheTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellClothe", for: indexPath) as! ClotheTableViewCell
         cell.photo.frame = CGRect(x: 0, y: 0, width: cell.imageClothe.frame.width, height: cell.imageClothe.frame.height)
-        cell.photo.image = loadPhotoByName(self.clothes[indexPath.row].name)
-        cell.clotheName.text = self.clothes[indexPath.row].name
+        cell.photo.image = loadPhotoByName(self.clothes[(indexPath as NSIndexPath).row].name)
+        cell.clotheName.text = self.clothes[(indexPath as NSIndexPath).row].name
         return cell
     }
     
-    func loadPhotoByName(text: String)-> UIImage
+    func loadPhotoByName(_ text: String)-> UIImage
     {
         switch text {
         case "shirt": return UIImage(named: "shirt")!
@@ -230,28 +230,28 @@ class ClotheTableViewController: UITableViewController, NSFetchedResultsControll
             return UIImage(named: "undefinded")!
         }
     }
-    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         //Social
-        let shareAction = UITableViewRowAction(style: .Default, title: "Share", handler: { (actin, indexPath) -> Void in
+        let shareAction = UITableViewRowAction(style: .default, title: "Share", handler: { (actin, indexPath) -> Void in
             let images = self.getImagesForClothe(indexPath)
             var imagesForShare: [UIImage] = []
             for image in images {
-                imagesForShare.append(UIImage(data: image.image)!)
+                imagesForShare.append(UIImage(data: image.image as Data)!)
             }
             let activityController = UIActivityViewController(activityItems: imagesForShare, applicationActivities: nil)
             activityController.popoverPresentationController?.sourceView = self.view
-            self.presentViewController(activityController, animated: true, completion: nil)
+            self.present(activityController, animated: true, completion: nil)
         })
         
         //Delete
-        let deleteAction = UITableViewRowAction(style: .Default, title: "Delete", handler: {(actin, indexPath) -> Void in
-            self.clothes.removeAtIndex(indexPath.row)
+        let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: {(actin, indexPath) -> Void in
+            self.clothes.remove(at: (indexPath as NSIndexPath).row)
             
-            if let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
-                let sessionToDelete = self.fetchResultController.objectAtIndexPath(indexPath) as! Clothe
+            if let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext {
+                let sessionToDelete = self.fetchResultController.object(at: indexPath) as! Clothe
                 
-                managedObjectContext.deleteObject(sessionToDelete)
-                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                managedObjectContext.delete(sessionToDelete)
+                tableView.deleteRows(at: [indexPath], with: .fade)
                 do {
                     try managedObjectContext.save()
                 } catch {
@@ -261,18 +261,18 @@ class ClotheTableViewController: UITableViewController, NSFetchedResultsControll
         })
         
         //Edit
-        let editAction = UITableViewRowAction(style : .Default, title: "Edit", handler: {(actin, indexPath) -> Void in
+        let editAction = UITableViewRowAction(style : .default, title: "Edit", handler: {(actin, indexPath) -> Void in
             self.indexEditClothe = indexPath
-            self.alertEditClothe(self.clothes[indexPath.row].name)
+            self.alertEditClothe(self.clothes[(indexPath as NSIndexPath).row].name)
             
         })
         
         //Show
-        let showAction = UITableViewRowAction(style : .Default, title: "Show", handler: {(actin, indexPath) -> Void in
+        let showAction = UITableViewRowAction(style : .default, title: "Show", handler: {(actin, indexPath) -> Void in
             self.showAllImagesForClothe = true
-            self.tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: UITableViewScrollPosition.None)
+            self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableViewScrollPosition.none)
             self.selectIndexPath = indexPath
-            self.performSegueWithIdentifier("showImages", sender: nil)
+            self.performSegue(withIdentifier: "showImages", sender: nil)
         })
         
         shareAction.backgroundColor = UIColor(red: 0/255.0, green: 0/255.0, blue: 255.0/255.0, alpha: 1.0)

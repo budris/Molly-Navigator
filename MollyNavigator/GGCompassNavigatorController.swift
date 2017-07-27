@@ -27,7 +27,7 @@ class GGCompassNavigatorController: UIViewController, CLLocationManagerDelegate 
         }
     };
     
-    func updateDirectionToDestination(newDirection : CLLocationDirection) {
+    func updateDirectionToDestination(_ newDirection : CLLocationDirection) {
         let TO_RAD = M_PI / 180;
         
         var direction = Float(newDirection)
@@ -39,18 +39,18 @@ class GGCompassNavigatorController: UIViewController, CLLocationManagerDelegate 
         }
 
         if let arrowImageView = self.compassPointerImage {
-            UIView.animateWithDuration(5, animations: { () -> Void in
-                arrowImageView.transform = CGAffineTransformMakeRotation(CGFloat(direction) * CGFloat(TO_RAD))
+            UIView.animate(withDuration: 5, animations: { () -> Void in
+                arrowImageView.transform = CGAffineTransform(rotationAngle: CGFloat(direction) * CGFloat(TO_RAD))
             })
         }
  
     }
     
-    func updateDistanceToDestination(newDistance : CLLocationDistance) {
+    func updateDistanceToDestination(_ newDistance : CLLocationDistance) {
         distnaceToGo.text? = String(format: "%0.0f mt", newDistance * 0.3048);
     }
     
-    func updateUsersDirection(newDirection : CLLocationDirection) {
+    func updateUsersDirection(_ newDirection : CLLocationDirection) {
         updateDirectionToDestination(newDirection)
     }
     
@@ -74,7 +74,7 @@ class GGCompassNavigatorController: UIViewController, CLLocationManagerDelegate 
         }
         locationManager.delegate = self;
         
-        if(CLLocationManager.authorizationStatus() == CLAuthorizationStatus.NotDetermined) {
+        if(CLLocationManager.authorizationStatus() == CLAuthorizationStatus.notDetermined) {
             locationManager.requestAlwaysAuthorization();
         }
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -83,7 +83,7 @@ class GGCompassNavigatorController: UIViewController, CLLocationManagerDelegate 
         locationManager.startUpdatingHeading();
     }
     
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first as CLLocation? {
             let (newDirection, newDistance) = compass.directionAndDistanceToDestination(location);
             self.updateDirectionToDestination(newDirection);
@@ -91,14 +91,14 @@ class GGCompassNavigatorController: UIViewController, CLLocationManagerDelegate 
         }
     }
     
-    func locationManager(manager: CLLocationManager, didUpdateHeading newHeading: CLHeading?) {
+    func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading?) {
         if let heading = newHeading {
             self.updateUsersDirection(heading.trueHeading);
         }
     }
     
-    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-        NSLog(error.description);
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        NSLog(error.localizedDescription);
     }
 
     
