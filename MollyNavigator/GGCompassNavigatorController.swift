@@ -28,7 +28,7 @@ class GGCompassNavigatorController: UIViewController, CLLocationManagerDelegate 
     };
     
     func updateDirectionToDestination(_ newDirection : CLLocationDirection) {
-        let TO_RAD = M_PI / 180;
+        let TO_RAD = Double.pi / 180;
         
         var direction = Float(newDirection)
         direction = direction - 180
@@ -91,10 +91,10 @@ class GGCompassNavigatorController: UIViewController, CLLocationManagerDelegate 
         }
     }
     
-    func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading?) {
-        if let heading = newHeading {
-            self.updateUsersDirection(heading.trueHeading);
-        }
+    func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
+        
+            self.updateUsersDirection(newHeading.trueHeading);
+        
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

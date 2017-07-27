@@ -37,7 +37,7 @@ class ImagesTableViewController: UITableViewController, UIImagePickerControllerD
     func updatePrice()
     {
         
-        for var row in 0..<tableView.numberOfRows(inSection: 0) {
+        for row in 0..<tableView.numberOfRows(inSection: 0) {
             let indexPath = IndexPath(row: row, section: 0)
             tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.top, animated: false)
             
@@ -202,7 +202,7 @@ class ImagesTableViewController: UITableViewController, UIImagePickerControllerD
         let day = components.day
         let month = components.month
         let year = components.year
-        return "\(day).\(month).\(year) \(hour):\(minutes)"
+        return "\(day ?? 0).\(month ?? 0).\(year ?? 0) \(hour ?? 0):\(minutes ?? 0)"
     }
     
     // MARK: - Photo engine

@@ -39,7 +39,7 @@ class GGCompass : NSObject {
     
     func distanceBetweenPoints(_ point1 : CLLocationCoordinate2D,
                                point2 : CLLocationCoordinate2D) -> Double {
-        let TO_RAD = M_PI / 180;
+        let TO_RAD = Double.pi / 180;
         let R = 3959.0 * 5280.0 // Radius of the earth in feet
         
         let lat1 = point1.latitude;
@@ -63,8 +63,8 @@ class GGCompass : NSObject {
 
     
     func headingFromPointToPoint(_ from : CLLocationCoordinate2D, to : CLLocationCoordinate2D) -> CLLocationDirection {
-        let TO_RAD = M_PI / 180;
-        let TO_DEG = 180 / M_PI;
+        let TO_RAD = Double.pi / 180;
+        let TO_DEG = 180 / Double.pi;
         
         // Set up constants in mathemtical form
         let phi1 = from.latitude * TO_RAD;
