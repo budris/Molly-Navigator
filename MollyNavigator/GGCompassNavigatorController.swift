@@ -100,6 +100,14 @@ class GGCompassNavigatorController: UIViewController, CLLocationManagerDelegate 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         NSLog(error.localizedDescription);
     }
+    
+    func someNewUnusedFunction() {
+        let someDoIt = {
+            print("Hello")
+        }
+        
+        someDoIt()
+    }
 
     
 }
