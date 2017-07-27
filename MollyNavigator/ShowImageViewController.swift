@@ -13,12 +13,12 @@ class ShowImageViewController: UIViewController {
     
     var img: Image?
     
-    @IBAction func showLocation(sender: AnyObject) { }
+    @IBAction func showLocation(_ sender: AnyObject) { }
     @IBOutlet weak var image: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        image.image = UIImage(data: (img?.image)!)
+        image.image = UIImage(data: (img?.image)! as Data)
         self.title = img?.clothe.name
     }
 
@@ -26,9 +26,9 @@ class ShowImageViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showLocation" {
-            let upcoming: GGCompassNavigatorController = segue.destinationViewController as! GGCompassNavigatorController
+            let upcoming: GGCompassNavigatorController = segue.destination as! GGCompassNavigatorController
             upcoming.image = img
         }
     }

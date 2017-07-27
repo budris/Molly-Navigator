@@ -11,10 +11,10 @@ import CoreData
 
 
 class Image: NSManagedObject {
-    @NSManaged var image: NSData
+    @NSManaged var image: Data
     @NSManaged var latitude: NSNumber?
     @NSManaged var longtitude: NSNumber?
-    @NSManaged var date: NSDate?
+    @NSManaged var date: Date?
     @NSManaged var price: NSNumber?
     @NSManaged var clothe: Clothe
 }
