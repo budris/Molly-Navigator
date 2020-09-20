@@ -1,7 +1,0 @@
-platform :ios, '9.0'
-use_frameworks!
-
-target 'MollyNavigator' do
- pod ‘MagicalRecord’
- 
-end
