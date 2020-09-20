@@ -27,9 +27,7 @@
 		90F1A1D31CD6369C009CEEFB /* SessionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F1A1D21CD6369C009CEEFB /* SessionTableViewCell.swift */; };
 		90F1A1D51CD6383F009CEEFB /* ClotheTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F1A1D41CD6383F009CEEFB /* ClotheTableViewCell.swift */; };
 		90F1A1D71CD638D7009CEEFB /* ClotheTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F1A1D61CD638D7009CEEFB /* ClotheTableViewController.swift */; };
-		DB41CEAE1D8F2AAE00410DF9 /* MagicalRecord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB41CEAD1D8F2AAE00410DF9 /* MagicalRecord.framework */; };
 		DB41CEB21D8F2B1E00410DF9 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB41CEB11D8F2B1E00410DF9 /* MapKit.framework */; };
-		E49A21C4885156AC30C82127 /* Pods_MollyNavigator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A545CE672EC938A166E9965 /* Pods_MollyNavigator.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,8 +48,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1A545CE672EC938A166E9965 /* Pods_MollyNavigator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MollyNavigator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4F6F8064F9E780264AB9DDDF /* Pods-MollyNavigator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MollyNavigator.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MollyNavigator/Pods-MollyNavigator.debug.xcconfig"; sourceTree = "<group>"; };
 		55EE1D7B1CDA6EFA003513AB /* Session.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Session.xcdatamodel; sourceTree = "<group>"; };
 		9038DBA01CDC8204004FF3B5 /* ImagesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagesTableViewController.swift; sourceTree = "<group>"; };
 		9038DBA21CDC8253004FF3B5 /* ImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
@@ -78,10 +74,6 @@
 		90F1A1D21CD6369C009CEEFB /* SessionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionTableViewCell.swift; sourceTree = "<group>"; };
 		90F1A1D41CD6383F009CEEFB /* ClotheTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClotheTableViewCell.swift; sourceTree = "<group>"; };
 		90F1A1D61CD638D7009CEEFB /* ClotheTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClotheTableViewController.swift; sourceTree = "<group>"; };
-		ADD98594EF57E56FD908AC43 /* Pods-MollyNavigator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MollyNavigator.release.xcconfig"; path = "Pods/Target Support Files/Pods-MollyNavigator/Pods-MollyNavigator.release.xcconfig"; sourceTree = "<group>"; };
-		DB41CEAB1D8F2AAB00410DF9 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../Library/Developer/Xcode/DerivedData/MollyNavigator-buvcmvwpzckeygfrjwgloprcriej/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
-		DB41CEAD1D8F2AAE00410DF9 /* MagicalRecord.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MagicalRecord.framework; path = "../Library/Developer/Xcode/DerivedData/MollyNavigator-buvcmvwpzckeygfrjwgloprcriej/Build/Products/Debug-iphonesimulator/MagicalRecord/MagicalRecord.framework"; sourceTree = "<group>"; };
-		DB41CEAF1D8F2AB200410DF9 /* SwiftSpinner.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftSpinner.framework; path = "../Library/Developer/Xcode/DerivedData/MollyNavigator-buvcmvwpzckeygfrjwgloprcriej/Build/Products/Debug-iphonesimulator/SwiftSpinner/SwiftSpinner.framework"; sourceTree = "<group>"; };
 		DB41CEB11D8F2B1E00410DF9 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -90,10 +82,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB41CEAE1D8F2AAE00410DF9 /* MagicalRecord.framework in Frameworks */,
 				906E510B1CE86A53002D94E5 /* CoreLocation.framework in Frameworks */,
 				DB41CEB21D8F2B1E00410DF9 /* MapKit.framework in Frameworks */,
-				E49A21C4885156AC30C82127 /* Pods_MollyNavigator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,13 +104,70 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		033F1DA6411C5BAA27060F22 /* Pods */ = {
+		63F4A11325179E4B00A9C29B /* Stories */ = {
 			isa = PBXGroup;
 			children = (
-				4F6F8064F9E780264AB9DDDF /* Pods-MollyNavigator.debug.xcconfig */,
-				ADD98594EF57E56FD908AC43 /* Pods-MollyNavigator.release.xcconfig */,
+				63F4A11425179E4B00A9C29B /* Images Story */,
+				63F4A11525179E4B00A9C29B /* Image Preview Story */,
+				63F4A11625179E4B00A9C29B /* Compass Story */,
+				63F4A11725179E4B00A9C29B /* Session Story */,
+				63F4A11825179E4B00A9C29B /* Clothes Story */,
 			);
-			name = Pods;
+			path = Stories;
+			sourceTree = "<group>";
+		};
+		63F4A11425179E4B00A9C29B /* Images Story */ = {
+			isa = PBXGroup;
+			children = (
+				9038DBA01CDC8204004FF3B5 /* ImagesTableViewController.swift */,
+				9038DBA21CDC8253004FF3B5 /* ImageTableViewCell.swift */,
+				909CB6CB1CE90EF0001F1FDB /* Image.swift */,
+			);
+			path = "Images Story";
+			sourceTree = "<group>";
+		};
+		63F4A11525179E4B00A9C29B /* Image Preview Story */ = {
+			isa = PBXGroup;
+			children = (
+				906E50FE1CE784DC002D94E5 /* ShowImageViewController.swift */,
+			);
+			path = "Image Preview Story";
+			sourceTree = "<group>";
+		};
+		63F4A11625179E4B00A9C29B /* Compass Story */ = {
+			isa = PBXGroup;
+			children = (
+				906E51081CE853BA002D94E5 /* GGCompassNavigatorController.swift */,
+				906E51001CE7BC44002D94E5 /* GGCompass.swift */,
+			);
+			path = "Compass Story";
+			sourceTree = "<group>";
+		};
+		63F4A11725179E4B00A9C29B /* Session Story */ = {
+			isa = PBXGroup;
+			children = (
+				90F1A1D01CD6323D009CEEFB /* SessionTableViewController.swift */,
+				90F1A1D21CD6369C009CEEFB /* SessionTableViewCell.swift */,
+				909CB6C31CE90ED0001F1FDB /* Session.swift */,
+			);
+			path = "Session Story";
+			sourceTree = "<group>";
+		};
+		63F4A11825179E4B00A9C29B /* Clothes Story */ = {
+			isa = PBXGroup;
+			children = (
+				90F1A1D61CD638D7009CEEFB /* ClotheTableViewController.swift */,
+				90F1A1D41CD6383F009CEEFB /* ClotheTableViewCell.swift */,
+				909CB6C71CE90EE2001F1FDB /* Clothe.swift */,
+			);
+			path = "Clothes Story";
+			sourceTree = "<group>";
+		};
+		63F4A11925179E5200A9C29B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		90DFB4081CD4B59200A9CB8D = {
@@ -131,7 +178,6 @@
 				90DFB4281CD4B59200A9CB8D /* MollyNavigatorTests */,
 				90DFB4331CD4B59200A9CB8D /* MollyNavigatorUITests */,
 				90DFB4121CD4B59200A9CB8D /* Products */,
-				033F1DA6411C5BAA27060F22 /* Pods */,
 				D5695536B2B8F40197AC92F0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -149,9 +195,8 @@
 		90DFB4131CD4B59200A9CB8D /* MollyNavigator */ = {
 			isa = PBXGroup;
 			children = (
-				90F5A1D01CDB995E0059441E /* Views */,
-				90F5A1CD1CDB991C0059441E /* Models */,
-				90F5A1CE1CDB992B0059441E /* Controllers */,
+				63F4A11325179E4B00A9C29B /* Stories */,
+				63F4A11925179E5200A9C29B /* Services */,
 				90F1A1CF1CD62E48009CEEFB /* Supports files */,
 			);
 			path = MollyNavigator;
@@ -188,47 +233,10 @@
 			name = "Supports files";
 			sourceTree = "<group>";
 		};
-		90F5A1CD1CDB991C0059441E /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				909CB6C31CE90ED0001F1FDB /* Session.swift */,
-				909CB6C71CE90EE2001F1FDB /* Clothe.swift */,
-				909CB6CB1CE90EF0001F1FDB /* Image.swift */,
-				906E51001CE7BC44002D94E5 /* GGCompass.swift */,
-			);
-			name = Models;
-			sourceTree = "<group>";
-		};
-		90F5A1CE1CDB992B0059441E /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				906E51081CE853BA002D94E5 /* GGCompassNavigatorController.swift */,
-				906E50FE1CE784DC002D94E5 /* ShowImageViewController.swift */,
-				9038DBA01CDC8204004FF3B5 /* ImagesTableViewController.swift */,
-				90F1A1D01CD6323D009CEEFB /* SessionTableViewController.swift */,
-				90F1A1D61CD638D7009CEEFB /* ClotheTableViewController.swift */,
-			);
-			name = Controllers;
-			sourceTree = "<group>";
-		};
-		90F5A1D01CDB995E0059441E /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				90F1A1D21CD6369C009CEEFB /* SessionTableViewCell.swift */,
-				90F1A1D41CD6383F009CEEFB /* ClotheTableViewCell.swift */,
-				9038DBA21CDC8253004FF3B5 /* ImageTableViewCell.swift */,
-			);
-			name = Views;
-			sourceTree = "<group>";
-		};
 		D5695536B2B8F40197AC92F0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				DB41CEB11D8F2B1E00410DF9 /* MapKit.framework */,
-				DB41CEAF1D8F2AB200410DF9 /* SwiftSpinner.framework */,
-				DB41CEAD1D8F2AAE00410DF9 /* MagicalRecord.framework */,
-				DB41CEAB1D8F2AAB00410DF9 /* Alamofire.framework */,
-				1A545CE672EC938A166E9965 /* Pods_MollyNavigator.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -240,12 +248,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 90DFB4391CD4B59200A9CB8D /* Build configuration list for PBXNativeTarget "MollyNavigator" */;
 			buildPhases = (
-				E157352EFC280A701A03EA88 /* [CP] Check Pods Manifest.lock */,
 				90DFB40D1CD4B59200A9CB8D /* Sources */,
 				90DFB40E1CD4B59200A9CB8D /* Frameworks */,
 				90DFB40F1CD4B59200A9CB8D /* Resources */,
-				B49FF89593426D5F79D5BE5C /* [CP] Embed Pods Frameworks */,
-				2EBAA93AF3688EBC07811FD4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -304,7 +309,7 @@
 				TargetAttributes = {
 					90DFB4101CD4B59200A9CB8D = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = MKJ3EVS82G;
+						DevelopmentTeam = C6B2297G29;
 						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -332,6 +337,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -373,54 +379,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		2EBAA93AF3688EBC07811FD4 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MollyNavigator/Pods-MollyNavigator-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B49FF89593426D5F79D5BE5C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MollyNavigator/Pods-MollyNavigator-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E157352EFC280A701A03EA88 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		90DFB40D1CD4B59200A9CB8D /* Sources */ = {
@@ -585,25 +543,24 @@
 		};
 		90DFB43A1CD4B59200A9CB8D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4F6F8064F9E780264AB9DDDF /* Pods-MollyNavigator.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = C6B2297G29;
 				INFOPLIST_FILE = MollyNavigator/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = sakstudent.MollyNavigator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		90DFB43B1CD4B59200A9CB8D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ADD98594EF57E56FD908AC43 /* Pods-MollyNavigator.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -614,7 +571,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = sakstudent.MollyNavigator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

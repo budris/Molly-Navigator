@@ -3,6 +3,5 @@ use_frameworks!
 
 target 'MollyNavigator' do
  pod ‘MagicalRecord’
-  
-
+ 
 end

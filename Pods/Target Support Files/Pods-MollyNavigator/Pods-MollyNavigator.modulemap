@@ -1,6 +1,0 @@
-framework module Pods_MollyNavigator {
-  umbrella header "Pods-MollyNavigator-umbrella.h"
-
-  export *
-  module * { export * }
-}
